@@ -137,3 +137,4 @@ D:\dev\ToDoList\ToDoList\obj\Debug\net8.0\refint\ToDoList.dll
 D:\dev\ToDoList\ToDoList\obj\Debug\net8.0\ToDoList.pdb
 D:\dev\ToDoList\ToDoList\obj\Debug\net8.0\ToDoList.genruntimeconfig.cache
 D:\dev\ToDoList\ToDoList\obj\Debug\net8.0\ref\ToDoList.dll
+D:\dev\ToDoList\ToDoList\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
