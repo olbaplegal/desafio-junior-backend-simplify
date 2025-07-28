@@ -18,9 +18,18 @@ public class TarefaController : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<Tarefa>> Get()
     {
-        var tarefas = _context.Tarefas.ToList();
+        var tarefas = _context.Tarefas;
         if (tarefas is null)
             return NotFound("Tarefa não encontrada");
         return tarefas;
+    }
+
+    [HttpGet("/{id}")]
+    public ActionResult<Tarefa> GetById(int id)
+    {
+        var tarefa = _context.Tarefas.FirstOrDefault(t => t.TarefaId == id);
+        if (tarefa is null)
+            return NotFound("Tarefa não encontrada");
+        return tarefa;
     }
 }
