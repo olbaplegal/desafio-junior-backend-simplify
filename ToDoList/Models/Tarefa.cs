@@ -7,8 +7,10 @@ public class Tarefa
 {
     [Key]
     public int TarefaId { get; set; }
-    public string Nome { get; set; }
-    public string Descricao { get; set; }
+    [Required]
+    public string? Nome { get; set; }
+    [Required]
+    public string? Descricao { get; set; }
     public bool Realizado { get; set; }
     public Prioridade Prioridade { get; set; }
 }
