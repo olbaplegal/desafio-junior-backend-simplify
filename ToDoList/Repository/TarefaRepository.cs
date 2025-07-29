@@ -24,31 +24,23 @@ namespace ToDoList.Repository
         }
         public Tarefa Add(Tarefa tarefa)
         {
-            if (tarefa == null)
-                throw new ArgumentException(nameof(tarefa));
 
             _context.Tarefas.Add(tarefa);
-            _context.SaveChanges();
+            //_context.SaveChanges();
             return tarefa;
         }
         public Tarefa Update(Tarefa tarefa)
         {
-            if (tarefa == null)
-                throw new ArgumentException(nameof(tarefa));
-
-            _context.Entry(tarefa).State = EntityState.Modified;
-            _context.SaveChanges();
+            //_context.Entry(tarefa).State = EntityState.Modified;
+            //_context.SaveChanges();
             return tarefa;
         }
         public Tarefa Delete(int id)
         {
             var tarefa = _context.Tarefas.FirstOrDefault(t => t.TarefaId == id);
 
-            if (tarefa == null)
-                throw new ArgumentException(nameof(tarefa));
-
             _context.Tarefas.Remove(tarefa);
-            _context.SaveChanges();
+            //_context.SaveChanges();
             return tarefa;
         }
     }
