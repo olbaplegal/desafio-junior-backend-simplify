@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "ToDoList.Controllers.TarefaController",
-    "Method": "GetById",
+    "Method": "Get",
     "RelativePath": "{id}",
     "HttpMethod": "GET",
     "IsController": true,

@@ -15,6 +15,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 
 var app = builder.Build();
 
