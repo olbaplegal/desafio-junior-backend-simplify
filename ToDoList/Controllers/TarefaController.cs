@@ -51,5 +51,19 @@ public class TarefaController : ControllerBase
         _context.SaveChanges();
 
         return Ok(tarefa);
+    
+    }
+    [HttpDelete("/{id}")]
+    public ActionResult<Tarefa> Delete(int id)
+    {
+        var tarefa = _context.Tarefas.FirstOrDefault(t => t.TarefaId == id);
+
+        if (tarefa is null)
+            return NotFound("Tarefa não encontrada");
+
+        _context.Tarefas.Remove(tarefa);
+        _context.SaveChanges();
+
+        return Ok(tarefa);
     }
 }
