@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ToDoList.Context;
 using ToDoList.Models;
 
@@ -38,5 +39,17 @@ public class TarefaController : ControllerBase
         _context.SaveChanges();
 
         return Ok("tarefa criada!");
+    }
+
+    [HttpPut("/{id}")]
+    public ActionResult<Tarefa> Put(int id, Tarefa tarefa)
+    {
+        if (id != tarefa.TarefaId)
+            return BadRequest("Tarefa não existe");
+
+        _context.Entry(tarefa).State = EntityState.Modified;
+        _context.SaveChanges();
+
+        return Ok(tarefa);
     }
 }
