@@ -19,8 +19,6 @@ public class TarefaController : ControllerBase
     public ActionResult<IEnumerable<Tarefa>> Get()
     {
         var tarefas = _context.Tarefas;
-        if (tarefas is null)
-            return NotFound("Tarefa não encontrada");
         return tarefas;
     }
 
@@ -31,5 +29,14 @@ public class TarefaController : ControllerBase
         if (tarefa is null)
             return NotFound("Tarefa não encontrada");
         return tarefa;
+    }
+
+    [HttpPost("/{id}")]
+    public ActionResult<Tarefa> Post(Tarefa tarefa)
+    {
+        _context.Tarefas.Add(tarefa);
+        _context.SaveChanges();
+
+        return Ok("tarefa criada!");
     }
 }

@@ -27,6 +27,37 @@
   },
   {
     "ContainingType": "ToDoList.Controllers.TarefaController",
+    "Method": "Post",
+    "RelativePath": "{id}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tarefa",
+        "Type": "ToDoList.Models.Tarefa",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ToDoList.Models.Tarefa",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ToDoList.Controllers.TarefaController",
     "Method": "Get",
     "RelativePath": "Tarefa",
     "HttpMethod": "GET",
