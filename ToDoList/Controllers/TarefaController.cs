@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Context;
 using ToDoList.Models;
+using ToDoList.Repository;
 
 namespace ToDoList.Controllers;
 
@@ -9,24 +10,25 @@ namespace ToDoList.Controllers;
 [ApiController]
 public class TarefaController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly ITarefaRepository _repository;
 
-    public TarefaController(AppDbContext context)
+    public TarefaController(ITarefaRepository repository)
     {
-        _context = context;
+        _repository = repository;
     }
 
     [HttpGet]
     public ActionResult<IEnumerable<Tarefa>> Get()
     {
-        var tarefas = _context.Tarefas;
-        return tarefas;
+        var tarefas = _repository.GetTarefas();
+        return Ok(tarefas);
     }
 
     [HttpGet("/{id}")]
     public ActionResult<Tarefa> GetById(int id)
     {
-        var tarefa = _context.Tarefas.FirstOrDefault(t => t.TarefaId == id);
+        var tarefa = _repository.GetTarefa(id);
+
         if (tarefa is null)
             return NotFound("Tarefa não encontrada");
         return tarefa;
@@ -35,8 +37,7 @@ public class TarefaController : ControllerBase
     [HttpPost("/{id}")]
     public ActionResult<Tarefa> Post(Tarefa tarefa)
     {
-        _context.Tarefas.Add(tarefa);
-        _context.SaveChanges();
+        _repository.Add(tarefa);
 
         return Ok("tarefa criada!");
     }
@@ -47,8 +48,7 @@ public class TarefaController : ControllerBase
         if (id != tarefa.TarefaId)
             return BadRequest("Tarefa não existe");
 
-        _context.Entry(tarefa).State = EntityState.Modified;
-        _context.SaveChanges();
+        _repository.Update(tarefa);
 
         return Ok(tarefa);
     
@@ -56,13 +56,12 @@ public class TarefaController : ControllerBase
     [HttpDelete("/{id}")]
     public ActionResult<Tarefa> Delete(int id)
     {
-        var tarefa = _context.Tarefas.FirstOrDefault(t => t.TarefaId == id);
+        var tarefa = _repository.GetTarefa(id);
 
         if (tarefa is null)
             return NotFound("Tarefa não encontrada");
 
-        _context.Tarefas.Remove(tarefa);
-        _context.SaveChanges();
+        _repository.Delete(id);
 
         return Ok(tarefa);
     }
