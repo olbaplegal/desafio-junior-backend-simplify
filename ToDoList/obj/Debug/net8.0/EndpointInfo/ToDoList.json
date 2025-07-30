@@ -41,24 +41,30 @@
             }
           }
         }
-      }
-    },
-    "/{id}": {
-      "get": {
+      },
+      "post": {
         "tags": [
           "Tarefa"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tarefa"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tarefa"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tarefa"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK",
@@ -81,8 +87,10 @@
             }
           }
         }
-      },
-      "post": {
+      }
+    },
+    "/{id}": {
+      "get": {
         "tags": [
           "Tarefa"
         ],
@@ -92,29 +100,11 @@
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Tarefa"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Tarefa"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Tarefa"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK",

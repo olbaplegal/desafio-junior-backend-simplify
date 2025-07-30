@@ -10,63 +10,45 @@ namespace ToDoList.Controllers;
 [ApiController]
 public class TarefaController : ControllerBase
 {
-    private readonly IUnitOfWork _uof;
+    private readonly IServices _services;
 
-    public TarefaController(IUnitOfWork uof)
+    public TarefaController(IServices services)
     {
-        _uof = uof;
+        _services = services;
     }
 
     [HttpGet]
     public ActionResult<IEnumerable<Tarefa>> Get()
     {
-        var tarefas = _uof.TarefaRepository.GetTarefas();
-        return Ok(tarefas);
+        var tarefa = _services.GetAll();
+        return Ok(tarefa);
     }
 
     [HttpGet("/{id}")]
     public ActionResult<Tarefa> Get(int id)
     {
-        var tarefa = _uof.TarefaRepository.GetTarefa(id);
-
-        if (tarefa is null)
-            return NotFound("Tarefa não encontrada");
-        return tarefa;
+        var tarefa = _services.Get(id);
+        return Ok(tarefa);
     }
 
-    [HttpPost("/{id}")]
+    [HttpPost]
     public ActionResult<Tarefa> Post(Tarefa tarefa)
     {
-        var novaTarefa = _uof.TarefaRepository.Add(tarefa);
-        _uof.Commit();
-
-        return Ok(tarefa);
+        var novaTarefa = _services.Post(tarefa);
+        return Ok(novaTarefa);
     }
 
     [HttpPut("/{id}")]
     public ActionResult<Tarefa> Put(int id, Tarefa tarefa)
     {
-        if (id != tarefa.TarefaId)
-            return BadRequest("Tarefa não existe");
-
-        var tarefaAtualizada = _uof.TarefaRepository.Update(tarefa);
-        _uof.Commit();
-
-        return Ok(tarefaAtualizada);
-    
+        var tarefaAtualizado = _services.Put(tarefa, id);
+        return Ok(tarefaAtualizado);
     }
 
     [HttpDelete("/{id}")]
     public ActionResult<Tarefa> Delete(int id)
     {
-        var tarefa = _uof.TarefaRepository.GetTarefa(id);
-
-        if (tarefa is null)
-            return NotFound("Tarefa não encontrada");
-
-        _uof.TarefaRepository.Delete(id);
-        _uof.Commit();
-
-        return Ok(tarefa);
+        var tarefa = _services.Delete(id);
+        return Ok(tarefa);  
     }
 }

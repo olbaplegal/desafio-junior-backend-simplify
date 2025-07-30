@@ -27,37 +27,6 @@
   },
   {
     "ContainingType": "ToDoList.Controllers.TarefaController",
-    "Method": "Post",
-    "RelativePath": "{id}",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "tarefa",
-        "Type": "ToDoList.Models.Tarefa",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "ToDoList.Models.Tarefa",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "ToDoList.Controllers.TarefaController",
     "Method": "Put",
     "RelativePath": "{id}",
     "HttpMethod": "PUT",
@@ -124,6 +93,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[ToDoList.Models.Tarefa, ToDoList, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ToDoList.Controllers.TarefaController",
+    "Method": "Post",
+    "RelativePath": "Tarefa",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tarefa",
+        "Type": "ToDoList.Models.Tarefa",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ToDoList.Models.Tarefa",
         "MediaTypes": [
           "text/plain",
           "application/json",

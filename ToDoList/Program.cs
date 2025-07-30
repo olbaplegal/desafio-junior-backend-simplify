@@ -16,6 +16,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<ITarefaRepository, TarefaRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IServices, Services>();
 
 
 var app = builder.Build();
