@@ -239,11 +239,16 @@
       "Tarefa": {
         "required": [
           "descricao",
-          "nome"
+          "nome",
+          "userId"
         ],
         "type": "object",
         "properties": {
           "tarefaId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
             "type": "integer",
             "format": "int32"
           },
