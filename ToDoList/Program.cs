@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using ToDoList.Context;
 using ToDoList.Repository;
+using ToDoList.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

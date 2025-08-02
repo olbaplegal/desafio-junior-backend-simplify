@@ -1,6 +1,6 @@
 ﻿using ToDoList.Models;
 
-namespace ToDoList.Repository;
+namespace ToDoList.Services;
 
 public interface IServices
 {
