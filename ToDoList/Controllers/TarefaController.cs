@@ -17,15 +17,15 @@ public class TarefaController : ControllerBase
         _services = services;
     }
 
-    [HttpGet]
-    public ActionResult<IEnumerable<Tarefa>> Get()
+    [HttpGet("all/{userId}")]
+    public ActionResult<IEnumerable<Tarefa>> GetAll(int userId)
     {
-        var tarefa = _services.GetAll();
+        var tarefa = _services.GetAll(userId);
         return Ok(tarefa);
     }
 
-    [HttpGet("/{id}")]
-    public ActionResult<Tarefa> Get(int id)
+    [HttpGet("only/{id}")]
+    public ActionResult<Tarefa> GetId(int id)
     {
         var tarefa = _services.Get(id);
         return Ok(tarefa);

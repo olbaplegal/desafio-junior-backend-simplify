@@ -12,9 +12,9 @@ namespace ToDoList.Repository
         {
             _context = context;
         }
-        public IEnumerable<Tarefa> GetTarefas()
+        public IEnumerable<Tarefa> GetTarefas(int userId)
         {
-            var tarefas = _context.Tarefas.ToList();
+            var tarefas = _context.Tarefas.Where(t => t.UserId == userId).ToList();
             return tarefas;
         }
         public Tarefa GetTarefa(int id)

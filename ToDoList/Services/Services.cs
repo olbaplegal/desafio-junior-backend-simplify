@@ -12,9 +12,9 @@ public class Services : IServices
         _uof = uof;
     }
 
-    public IEnumerable<Tarefa> GetAll()
+    public IEnumerable<Tarefa> GetAll(int userId)
     {
-        var tarefas = _uof.TarefaRepository.GetTarefas();
+        var tarefas = _uof.TarefaRepository.GetTarefas(userId);
         return tarefas;
     }
 
