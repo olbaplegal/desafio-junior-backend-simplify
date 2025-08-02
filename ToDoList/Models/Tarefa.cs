@@ -8,6 +8,8 @@ public class Tarefa
     [Key]
     public int TarefaId { get; set; }
     [Required]
+    public int UserId { get; set; }
+    [Required]
     public string? Nome { get; set; }
     [Required]
     public string? Descricao { get; set; }
