@@ -30,11 +30,21 @@ public class Services : IServices
 
     public Tarefa Post(Tarefa tarefa)
     {
+        var existeTarefaComMesmoNome = _uof.TarefaRepository
+                                       .GetTarefas(tarefa.UserId)
+                                       .Any(t => t.Nome == tarefa.Nome);
+
+        if (existeTarefaComMesmoNome)
+        {
+            throw new Exception("Nome da tarefa já existe!");
+        }
+
         var novaTarefa = _uof.TarefaRepository.Add(tarefa);
         _uof.Commit();
 
-        return tarefa;
+        return novaTarefa;
     }
+
 
     public Tarefa Put(Tarefa tarefa, int id)
     {
