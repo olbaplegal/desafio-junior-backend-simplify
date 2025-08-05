@@ -14,12 +14,12 @@ namespace ToDoList.Repository
         }
         public IEnumerable<Tarefa> GetTarefas(int userId)
         {
-            var tarefas = _context.Tarefas.Where(t => t.UserId == userId).ToList();
+            var tarefas = _context.Tarefas.Where(t => t.UserId == userId && t.IsDeleted == false).ToList();
             return tarefas;
         }
         public Tarefa GetTarefa(int id)
         {
-            var tarefa = _context.Tarefas.FirstOrDefault(t => t.TarefaId == id);
+            var tarefa = _context.Tarefas.FirstOrDefault(t => t.TarefaId == id && t.IsDeleted == false);
             return tarefa;
         }
         public Tarefa Add(Tarefa tarefa)

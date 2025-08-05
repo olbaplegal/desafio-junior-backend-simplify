@@ -15,4 +15,5 @@ public class Tarefa
     public string? Descricao { get; set; }
     public bool Realizado { get; set; }
     public Prioridade Prioridade { get; set; }
+    public bool IsDeleted { get; set; } = false;
 }

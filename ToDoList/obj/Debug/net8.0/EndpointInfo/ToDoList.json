@@ -280,6 +280,9 @@
           },
           "prioridade": {
             "$ref": "#/components/schemas/Prioridade"
+          },
+          "isDeleted": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

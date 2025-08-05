@@ -73,7 +73,9 @@ public class Services : IServices
         if (tarefa is null)
             throw new Exception("Tarefa não encontrada");
 
-        _uof.TarefaRepository.Delete(id);
+        _uof.TarefaRepository.GetTarefa(id).IsDeleted = true;
+
+        //_uof.TarefaRepository.Delete(id);
         _uof.Commit();
 
         return tarefa;
