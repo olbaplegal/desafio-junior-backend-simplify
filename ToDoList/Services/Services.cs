@@ -51,6 +51,15 @@ public class Services : IServices
         if (id != tarefa.TarefaId)
             throw new Exception("Tarefa não existe");
 
+        var existeTarefaComMesmoNome = _uof.TarefaRepository
+                                       .GetTarefas(tarefa.UserId)
+                                       .Any(t => t.Nome == tarefa.Nome);
+
+        if (existeTarefaComMesmoNome)
+        {
+            throw new Exception("Nome da tarefa já existe!");
+        }
+
         var tarefaAtualizada = _uof.TarefaRepository.Update(tarefa);
         _uof.Commit();
 
